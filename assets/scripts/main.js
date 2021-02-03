@@ -25,6 +25,7 @@ const soundLevel = {
 
 //function to update the image correcponding to volume
 function changeVolumeIcon(){
+    honkButton.disabled = false;
     hornSound.volume = (volumeNumber.value)/100.0;  //volume is range from 0 to 1
     if(volumeNumber.value == soundLevel['level0']){
         volumeImage.scr = "./assets/media/icons/volume-level-0.svg";
@@ -57,6 +58,10 @@ volumeNumber.addEventListener("input", function(){
 });
 
 //Update the 3 radios (car/air/party) to corresponding sources
+carHorn.onclick = function(){
+    hornSound.scr = "./assets/media/audio/car-horn.mp3";
+    soundImage.src = "./assets/media/images/car.svg";
+};
 airHorn.onclick = function(){
     hornSound.src = "./assets/media/audio/air-horn.mp3";
     soundImage.src = "./assets/media/images/air-horn.svg";
@@ -65,10 +70,7 @@ partyHorn.onclick = function(){
     hornSound.src = "./assets/media/audio/party-horn.mp3";
     soundImage.src = "./assets/media/images/party-horn.svg";
 };
-carHorn.onclick = function(){
-    hornSound.scr = "./assets/media/audio/car-horn.mp3";
-    soundImage.src = "./assets/media/images/car.svg";
-};
+
 
 //play horn
 //from https://stackoverflow.com/questions/19454310/stop-form-refreshing-page-on-submit 
