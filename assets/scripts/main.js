@@ -28,7 +28,7 @@ function changeVolumeIcon(){
     hornSound.volume = (volumeNumber.value)/100.0;  //volume is range from 0 to 1
     if(volumeNumber.value == level0){
         volumeImage.scr = "./assets/media/icons/volume-level-0.svg";
-        horn_btn.disabled = true;   //dissable button if it is 0
+        honkButton.disabled = true;   //dissable button if it is 0
     }
     else if(volumeNumber.value <= level1){
         volumeImage.scr = "./assets/media/icons/volume-level-1.svg";
@@ -67,7 +67,7 @@ partyHorn.onclick = function(){
 };
 carHorn.onclick = function(){
     hornSound.scr = "./assets/media/audio/car-horn.mp3";
-    soundImage.src = "./assets/media/images/car-horn.svg";
+    soundImage.src = "./assets/media/images/car.svg";
 };
 
 //play horn
