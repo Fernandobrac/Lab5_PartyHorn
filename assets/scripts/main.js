@@ -41,19 +41,38 @@ function changeVolumeIcon(){
     }
     else{
         volumeImage.scr = "./assets/media/icons/volume-level-0.svg";
-        horn_btn.disabled = true;   //dissable button if not in range of 0-100
+        honkButton.disabled = true;   //dissable button if not in range of 0-100
     }
-}
+};
 
 //call changeVolumeIcon function
 // https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event
-volumeNumber.addEventListener("input", changeVolumeIcon);
+volumeSlider.addEventListener("input", function(){
+    volumeNumber.value = volumeSlider.value;
+    changeVolumeIcon();
+});
+volumeNumber.addEventListener("input", function(){
+    volumeSlider.value = volumeNumber.value;
+    changeVolumeIcon();
+});
 
-//function to update the 3 radios (car/air/party)
+//Update the 3 radios (car/air/party) to corresponding sources
+airHorn.onclick = function(){
+    hornSound.src = "./assets/media/audio/air-horn.mp3";
+    soundImage.src = "./assets/media/images/air-horn.svg";
+};
+partyHorn.onclick = function(){
+    hornSound.src = "./assets/media/audio/party-horn.mp3";
+    soundImage.src = "./assets/media/images/party-horn.svg";
+};
+carHorn.onclick = function(){
+    hornSound.scr = "./assets/media/audio/car-horn.mp3";
+    soundImage.src = "./assets/media/images/car-horn.svg";
+};
 
-
-//play honk
+//play horn
+//from https://stackoverflow.com/questions/19454310/stop-form-refreshing-page-on-submit 
 honkButton.onclick = function(e){
     e.preventDefault();
-    honkButton.play();
-}
+    hornSound.play();
+};
