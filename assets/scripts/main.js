@@ -13,7 +13,7 @@ var honkButton = document.getElementById("honk-btn");
 
 let soundImage = document.getElementById("sound-image");
 
-let form = document.getElementById("party-horn-form");
+//let form = document.getElementById("party-horn-form");
 
 const soundLevel = {
     level0: 0,
@@ -33,12 +33,15 @@ function changeVolumeIcon(){
     }
     else if(volumeNumber.value <= soundLevel['level1']){
         volumeImage.scr = "./assets/media/icons/volume-level-1.svg";
+        honkButton.disabled = true; 
     }
     else if(volumeNumber.value <= soundLevel['level2']){
         volumeImage.scr = "./assets/media/icons/volume-level-2.svg";
+        honkButton.disabled = true; 
     }
     else if(volumeNumber.value <= soundLevel['level3']){
         volumeImage.scr = "./assets/media/icons/volume-level-3.svg";
+        honkButton.disabled = true; 
     }
     else{
         volumeImage.scr = "./assets/media/icons/volume-level-0.svg";
