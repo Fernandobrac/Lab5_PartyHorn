@@ -26,17 +26,17 @@ const soundLevel = {
 //function to update the image correcponding to volume
 function changeVolumeIcon(){
     hornSound.volume = (volumeNumber.value)/100.0;  //volume is range from 0 to 1
-    if(volumeNumber.value == level0){
+    if(volumeNumber.value == soundLevel['level0']){
         volumeImage.scr = "./assets/media/icons/volume-level-0.svg";
         honkButton.disabled = true;   //dissable button if it is 0
     }
-    else if(volumeNumber.value <= level1){
+    else if(volumeNumber.value <= soundLevel['level1']){
         volumeImage.scr = "./assets/media/icons/volume-level-1.svg";
     }
-    else if(volumeNumber.value <= level2){
+    else if(volumeNumber.value <= soundLevel['level2']){
         volumeImage.scr = "./assets/media/icons/volume-level-2.svg";
     }
-    else if(volumeNumber.value <= level3){
+    else if(volumeNumber.value <= soundLevel['level3']){
         volumeImage.scr = "./assets/media/icons/volume-level-3.svg";
     }
     else{
