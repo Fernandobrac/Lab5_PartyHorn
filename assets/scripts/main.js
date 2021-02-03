@@ -47,7 +47,7 @@ function changeVolumeIcon(){
 
 //call changeVolumeIcon function
 // https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event
-volumeNumber.addEventListener("input", updateVolume);
+volumeNumber.addEventListener("input", changeVolumeIcon);
 
 //function to update the 3 radios (car/air/party)
 
