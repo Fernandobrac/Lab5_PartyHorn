@@ -27,25 +27,19 @@ const soundLevel = {
 function changeVolumeIcon(){
     honkButton.disabled = false;
     hornSound.volume = (volumeNumber.value)/100.0;  //volume is range from 0 to 1
-    if(volumeNumber.value == soundLevel['level0']){
-        volumeImage.scr = "./assets/media/icons/volume-level-0.svg";
-        honkButton.disabled = true;   //dissable button if it is 0
-    }
-    else if(volumeNumber.value <= soundLevel['level1']){
-        volumeImage.scr = "./assets/media/icons/volume-level-1.svg";
-        honkButton.disabled = true; 
-    }
-    else if(volumeNumber.value <= soundLevel['level2']){
-        volumeImage.scr = "./assets/media/icons/volume-level-2.svg";
-        honkButton.disabled = true; 
-    }
-    else if(volumeNumber.value <= soundLevel['level3']){
+    if(volumeNumber.value > soundLevel['level2']){
         volumeImage.scr = "./assets/media/icons/volume-level-3.svg";
-        honkButton.disabled = true; 
+    }
+    else if(volumeNumber.value > soundLevel['level1']){
+        volumeImage.scr = "./assets/media/icons/volume-level-2.svg";
+    }
+    else if(volumeNumber.value > soundLevel['level0']){
+        volumeImage.scr = "./assets/media/icons/volume-level-1.svg";
     }
     else{
         volumeImage.scr = "./assets/media/icons/volume-level-0.svg";
         honkButton.disabled = true;   //dissable button if not in range of 0-100
+        volumeImage.alt = "Off";
     }
 };
 
