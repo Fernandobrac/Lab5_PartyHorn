@@ -58,15 +58,15 @@ volumeNumber.addEventListener("input", function(){
 });
 
 //Update the 3 radios (car/air/party) to corresponding sources
-carHorn.onclick = function(){
+carHorn.oninput = function(){
     hornSound.scr = "./assets/media/audio/car-horn.mp3";
     soundImage.src = "./assets/media/images/car.svg";
 };
-airHorn.onclick = function(){
+airHorn.oninput = function(){
     hornSound.src = "./assets/media/audio/air-horn.mp3";
     soundImage.src = "./assets/media/images/air-horn.svg";
 };
-partyHorn.onclick = function(){
+partyHorn.oninput = function(){
     hornSound.src = "./assets/media/audio/party-horn.mp3";
     soundImage.src = "./assets/media/images/party-horn.svg";
 };
