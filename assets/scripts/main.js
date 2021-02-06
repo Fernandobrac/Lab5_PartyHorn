@@ -61,20 +61,24 @@ volumeNumber.addEventListener("input", function(){
 });
 
 //Update the 3 radios (car/air/party) to corresponding sources
-carHorn.addEventListener("click", function(){
-    hornSound.scr = "./assets/media/audio/car-horn.mp3";
-    soundImage.src = "./assets/media/images/car.svg";
-});
-airHorn.addEventListener("click", function(){
-    //hornSound.src = "./assets/media/audio/air-horn.mp3";
-    hornSound.src = "https://www.myinstants.com/media/sounds/obi-wan-hello-there.mp3";
-    soundImage.src = "./assets/media/images/air-horn.svg";
-});
-partyHorn.addEventListener("click", function(){
-    hornSound.src = "./assets/media/audio/party-horn.mp3";
-    soundImage.src = "./assets/media/images/party-horn.svg";
-});
+carHorn.addEventListener("click", switchToCar);
+airHorn.addEventListener("click", switchToAir);
+partyHorn.addEventListener("click", switchToParty);
 
+function switchToCar(){
+    soundImage.src = './assets/media/images/car.svg'
+    hornSound.src = './assets/media/audio/car-horn.mp3'
+};
+
+function switchToParty(){
+    soundImage.src = './assets/media/images/party-horn.svg'
+    hornSound.src = './assets/media/audio/party-horn.mp3'
+}
+
+function switchToAir(){
+    soundImage.src = './assets/media/images/air-horn.svg'
+    hornSound.src = './assets/media/audio/air-horn.mp3'
+}
 form.addEventListener("submit", playHorn);
 
 //play horn
