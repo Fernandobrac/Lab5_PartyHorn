@@ -25,19 +25,35 @@ const soundLevel = {
 
 
 //function to update the image correcponding to volume
-function changeVolumeIcon(vLevel, vImage){
-    if(vLevel > soundLevel['level2']){
-        vImage.scr = "./assets/media/icons/volume-level-3.svg";
+function changeVolumeIcon(vLevel){
+    if(vLevel == 0){
+        volumeImage.src = "./assets/media/icons/volume-level-0.svg";
     }
-    else if(vLevel > soundLevel['level1']){
-        vImage.scr = "./assets/media/icons/volume-level-2.svg";
+    else if(vLevel > soundLevel[level0] && vLevel <= soundLevel[level1]){
+        volumeImage.src = "./assets/media/icons/volume-level-1.svg";
     }
-    else if(vLevel > soundLevel['level0']){
-        vImage.scr = "./assets/media/icons/volume-level-1.svg";
+    else if (vLevel > soundLevel[level1] && vLevel < soundLevel[level2]){
+        volumeImage.src = "./assets/media/icons/volume-level-2.svg";
+    }
+    else if(vLevel > soundLevel[level2]){
+        volumeImage.src = "./assets/media/icons/volume-level-3.svg";
     }
     else{
-        vImage.scr = "./assets/media/icons/volume-level-0.svg";
+        volumeImage.src = "https://smaller-pictures.appspot.com/images/dreamstime_xxl_65780868_small.jpg";
     }
+
+    // if(vLevel > soundLevel['level2']){
+    //     volumeImage.scr = "./assets/media/icons/volume-level-3.svg";
+    // }
+    // else if(vLevel > soundLevel['level1']){
+    //     volumeImage.scr = "./assets/media/icons/volume-level-2.svg";
+    // }
+    // else if(vLevel > soundLevel['level0']){
+    //     volumeImage.scr = "./assets/media/icons/volume-level-1.svg";
+    // }
+    // else{
+    //     volumeImage.scr = "./assets/media/icons/volume-level-0.svg";
+    // }
 };
 
 //call changeVolumeIcon function
@@ -52,7 +68,7 @@ volumeSlider.addEventListener("input", function(){
     else{
         honkButton.disabled = false;
     }
-    changeVolumeIcon(volumeSlider.value, volumeImage);
+    changeVolumeIcon(volumeSlider.value);
 });
 
 volumeNumber.addEventListener("input", function(){
@@ -64,7 +80,7 @@ volumeNumber.addEventListener("input", function(){
     else{
         honkButton.disabled = false;
     }
-    changeVolumeIcon(volumeNumber.value, volumeImage);
+    changeVolumeIcon(volumeNumber.value);
 });
 
 //Update the 3 radios (car/air/party) to corresponding sources
@@ -86,6 +102,6 @@ form.addEventListener("submit", playHorn);
 //play horn
 //from https://stackoverflow.com/questions/19454310/stop-form-refreshing-page-on-submit 
 function playHorn(e) {
-    e.preventDefault();
+    //e.preventDefault();
     hornSound.play();
 };
