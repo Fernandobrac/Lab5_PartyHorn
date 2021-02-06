@@ -16,13 +16,6 @@ let soundImage = document.getElementById("sound-image");
 
 let form = document.getElementById("party-horn-form");
 
-const soundLevel = {
-    level0: 0,
-    level1: 33,
-    level2: 66,
-    level3: 100
-};
-
 
 //function to update the image correcponding to volume
 function changeVolumeIcon(vLevel){
@@ -38,22 +31,6 @@ function changeVolumeIcon(vLevel){
     else if(vLevel > 66){
         volumeImage.src = "./assets/media/icons/volume-level-3.svg";
     }
-    else{
-        volumeImage.src = "https://smaller-pictures.appspot.com/images/dreamstime_xxl_65780868_small.jpg";
-    }
-
-    // if(vLevel > soundLevel['level2']){
-    //     volumeImage.scr = "./assets/media/icons/volume-level-3.svg";
-    // }
-    // else if(vLevel > soundLevel['level1']){
-    //     volumeImage.scr = "./assets/media/icons/volume-level-2.svg";
-    // }
-    // else if(vLevel > soundLevel['level0']){
-    //     volumeImage.scr = "./assets/media/icons/volume-level-1.svg";
-    // }
-    // else{
-    //     volumeImage.scr = "./assets/media/icons/volume-level-0.svg";
-    // }
 };
 
 //call changeVolumeIcon function
@@ -89,7 +66,8 @@ carHorn.addEventListener("click", function(){
     soundImage.src = "./assets/media/images/car.svg";
 });
 airHorn.addEventListener("click", function(){
-    hornSound.src = "./assets/media/audio/air-horn.mp3";
+    //hornSound.src = "./assets/media/audio/air-horn.mp3";
+    hornSound.src = "https://www.myinstants.com/media/sounds/obi-wan-hello-there.mp3";
     soundImage.src = "./assets/media/images/air-horn.svg";
 });
 partyHorn.addEventListener("click", function(){
