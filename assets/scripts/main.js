@@ -8,12 +8,13 @@ let volumeSlider = document.getElementById("volume-slider");
 let airHorn = document.getElementById("radio-air-horn");
 let carHorn = document.getElementById("radio-car-horn");
 let partyHorn = document.getElementById("radio-party-horn");
+
 let hornSound = document.getElementById("horn-sound");
 var honkButton = document.getElementById("honk-btn");
 
 let soundImage = document.getElementById("sound-image");
 
-//let form = document.getElementById("party-horn-form");
+let form = document.getElementById("party-horn-form");
 
 const soundLevel = {
     level0: 0,
@@ -24,22 +25,18 @@ const soundLevel = {
 
 
 //function to update the image correcponding to volume
-function changeVolumeIcon(){
-    honkButton.disabled = false;
-    hornSound.volume = (volumeNumber.value)/100.0;  //volume is range from 0 to 1
-    if(volumeNumber.value > soundLevel['level2']){
-        volumeImage.scr = "./assets/media/icons/volume-level-3.svg";
+function changeVolumeIcon(vLevel, vImage){
+    if(vLevel > soundLevel['level2']){
+        vImage.scr = "./assets/media/icons/volume-level-3.svg";
     }
-    else if(volumeNumber.value > soundLevel['level1']){
-        volumeImage.scr = "./assets/media/icons/volume-level-2.svg";
+    else if(vLevel > soundLevel['level1']){
+        vImage.scr = "./assets/media/icons/volume-level-2.svg";
     }
-    else if(volumeNumber.value > soundLevel['level0']){
-        volumeImage.scr = "./assets/media/icons/volume-level-1.svg";
+    else if(vLevel > soundLevel['level0']){
+        vImage.scr = "./assets/media/icons/volume-level-1.svg";
     }
     else{
-        volumeImage.scr = "./assets/media/icons/volume-level-0.svg";
-        honkButton.disabled = true;   //dissable button if not in range of 0-100
-        volumeImage.alt = "Off";
+        vImage.scr = "./assets/media/icons/volume-level-0.svg";
     }
 };
 
@@ -47,31 +44,48 @@ function changeVolumeIcon(){
 // https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event
 volumeSlider.addEventListener("input", function(){
     volumeNumber.value = volumeSlider.value;
-    changeVolumeIcon();
+    hornSound.volume = volumeSlider.value / 100; //volume ranges from 0 to 1
+    
+    if(volumeSlider.value == 0){
+        honkButton.disabled = true;
+    }
+    else{
+        honkButton.disabled = false;
+    }
+    changeVolumeIcon(volumeSlider.value, volumeImage);
 });
+
 volumeNumber.addEventListener("input", function(){
     volumeSlider.value = volumeNumber.value;
-    changeVolumeIcon();
+    hornSound.volume = volumeNumber.value / 100; //volume ranges from 0 to 1
+    if(volumeNumber.value == 0){
+        honkButton.disabled = true;
+    }
+    else{
+        honkButton.disabled = false;
+    }
+    changeVolumeIcon(volumeNumber.value, volumeImage);
 });
 
 //Update the 3 radios (car/air/party) to corresponding sources
-carHorn.oninput = function(){
+carHorn.addEventListener("click", function(){
     hornSound.scr = "./assets/media/audio/car-horn.mp3";
     soundImage.src = "./assets/media/images/car.svg";
-};
-airHorn.oninput = function(){
+});
+airHorn.addEventListener("click", function(){
     hornSound.src = "./assets/media/audio/air-horn.mp3";
     soundImage.src = "./assets/media/images/air-horn.svg";
-};
-partyHorn.oninput = function(){
+});
+partyHorn.addEventListener("click", function(){
     hornSound.src = "./assets/media/audio/party-horn.mp3";
     soundImage.src = "./assets/media/images/party-horn.svg";
-};
+});
 
+form.addEventListener("submit", playHorn);
 
 //play horn
 //from https://stackoverflow.com/questions/19454310/stop-form-refreshing-page-on-submit 
-honkButton.onclick = function(e){
+function playHorn(e) {
     e.preventDefault();
     hornSound.play();
 };
