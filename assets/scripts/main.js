@@ -66,18 +66,18 @@ airHorn.addEventListener("click", switchToAir);
 partyHorn.addEventListener("click", switchToParty);
 
 function switchToCar(){
-    soundImage.src = './assets/media/images/car.svg'
-    hornSound.src = './assets/media/audio/car-horn.mp3'
+    soundImage.src = './assets/media/images/car.svg';
+    hornSound.src = './assets/media/audio/car-horn.mp3';
 };
 
 function switchToParty(){
-    soundImage.src = './assets/media/images/party-horn.svg'
-    hornSound.src = './assets/media/audio/party-horn.mp3'
+    soundImage.src = './assets/media/images/party-horn.svg';
+    hornSound.src = './assets/media/audio/party-horn.mp3';
 }
 
 function switchToAir(){
-    soundImage.src = './assets/media/images/air-horn.svg'
-    hornSound.src = './assets/media/audio/air-horn.mp3'
+    soundImage.src = './assets/media/images/air-horn.svg';
+    hornSound.src = './assets/media/audio/air-horn.mp3';
 }
 form.addEventListener("submit", playHorn);
 
