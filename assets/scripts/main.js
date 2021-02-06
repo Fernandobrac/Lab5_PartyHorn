@@ -29,13 +29,13 @@ function changeVolumeIcon(vLevel){
     if(vLevel == 0){
         volumeImage.src = "./assets/media/icons/volume-level-0.svg";
     }
-    else if(vLevel > soundLevel[level0] && vLevel <= soundLevel[level1]){
+    else if(vLevel > 0 && vLevel <= 33){
         volumeImage.src = "./assets/media/icons/volume-level-1.svg";
     }
-    else if (vLevel > soundLevel[level1] && vLevel < soundLevel[level2]){
+    else if (vLevel > 33 && vLevel < 66){
         volumeImage.src = "./assets/media/icons/volume-level-2.svg";
     }
-    else if(vLevel > soundLevel[level2]){
+    else if(vLevel > 66){
         volumeImage.src = "./assets/media/icons/volume-level-3.svg";
     }
     else{
@@ -102,6 +102,6 @@ form.addEventListener("submit", playHorn);
 //play horn
 //from https://stackoverflow.com/questions/19454310/stop-form-refreshing-page-on-submit 
 function playHorn(e) {
-    //e.preventDefault();
+    e.preventDefault();
     hornSound.play();
 };
